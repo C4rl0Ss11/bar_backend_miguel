@@ -25,9 +25,17 @@ public class ClientController {
     public Optional<Client> getById(@PathVariable("clientId")Long clientId){
         return clientService.getClient(clientId);
     }
+
+
     @PostMapping
     public Client saveUpdate(@RequestBody Client client){
         clientService.saveOrUpdate(client);
+        return client;
+    }
+    @PutMapping("/{clientId}")
+    public Client updateClient(@PathVariable("clientId") Long clientId, @RequestBody Client client) {
+        // Aquí puedes verificar si el cliente existe antes de actualizarlo
+        clientService.updateClient(clientId, client);
         return client;
     }
     @DeleteMapping("/{clientId}")
