@@ -1,5 +1,6 @@
 package com.bar.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,11 +16,17 @@ public class Venta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idVenta;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
     private Date fecha;
+
     private BigDecimal total;
     private Integer idCliente;
     private Boolean estado;
 
     @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetalleVenta> detalleVenta;
+
+
 }
