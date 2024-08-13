@@ -21,3 +21,4 @@ public class DetalleVenta {
     @JoinColumn(name = "idVenta", nullable = false)
     private Venta venta;
 }
+

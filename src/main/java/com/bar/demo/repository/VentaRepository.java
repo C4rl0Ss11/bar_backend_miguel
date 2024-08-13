@@ -6,6 +6,10 @@ import org.springframework.stereotype.Repository;
 
 
 
+import java.util.Optional;
+
+
 @Repository
 public interface VentaRepository extends JpaRepository<Venta, Integer> {
+    Optional<Venta> findById(Integer idVenta);
 }

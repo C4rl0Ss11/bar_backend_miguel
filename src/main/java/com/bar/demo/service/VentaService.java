@@ -5,6 +5,7 @@ import com.bar.demo.repository.VentaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,23 +19,27 @@ public class VentaService {
         return ventaRepository.findAll();
     }
 
-    public Optional<Venta> getVentaById(int id) {
-        return ventaRepository.findById(id);
+    public Optional<Venta> getVentaById(int idVenta) {
+        return ventaRepository.findById(idVenta);
     }
 
     public Venta saveOrUpdate(Venta venta) {
+        if (venta.getFecha() == null) {
+            venta.setFecha(new Date());  // Establece la fecha actual si no se proporciona
+        }
         return ventaRepository.save(venta);
     }
 
-    public void deleteVenta(int id) {
-        ventaRepository.deleteById(id);
+    public Venta updateVenta(int idVenta, Venta venta) {
+        Venta existingVenta = ventaRepository.findById(idVenta).orElseThrow();
+        existingVenta.setFecha(venta.getFecha() != null ? venta.getFecha() : existingVenta.getFecha());
+        existingVenta.setTotal(venta.getTotal());
+        existingVenta.setIdCliente(venta.getIdCliente());
+        existingVenta.setEstado(venta.getEstado());
+        return ventaRepository.save(existingVenta);
     }
 
-    public Venta updateVenta(int id, Venta updatedVenta) {
-        if (ventaRepository.existsById(id)) {
-            updatedVenta.setIdVenta(id);
-            return ventaRepository.save(updatedVenta);
-        }
-        return null;
+    public void deleteVenta(int idVenta) {
+        ventaRepository.deleteById(idVenta);
     }
 }
