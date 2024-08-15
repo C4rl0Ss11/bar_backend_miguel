@@ -7,6 +7,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
 
 @Data
 @Entity
@@ -24,9 +25,10 @@ public class Venta {
     private BigDecimal total;
     private Integer idCliente;
     private Boolean estado;
+    private Integer mesa;
 
     @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<DetalleVenta> detalleVenta;
+    private List<DetalleVenta> detalleVenta = new ArrayList<>();
 
 
 }
