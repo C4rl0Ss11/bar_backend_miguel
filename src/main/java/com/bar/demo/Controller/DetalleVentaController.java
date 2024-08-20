@@ -1,27 +1,18 @@
 package com.bar.demo.Controller;
 
-<<<<<<< HEAD
 import com.bar.demo.Controller.dto.DetalleVentaDTO;
 import com.bar.demo.entity.DetalleVenta;
 import com.bar.demo.service.IDetalleVentaService;
-=======
-import com.bar.demo.entity.DetalleVenta;
-import com.bar.demo.service.DetalleVentaService;
->>>>>>> 7c669b89111448140bd76d3866b2563fe1316aa3
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-<<<<<<< HEAD
 import java.net.URI;
 import java.net.URISyntaxException;
-=======
->>>>>>> 7c669b89111448140bd76d3866b2563fe1316aa3
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-<<<<<<< HEAD
 @RequestMapping("/api/detalle")
 public class DetalleVentaController {
 
@@ -134,39 +125,3 @@ public class DetalleVentaController {
     }
 
 
-=======
-@RequestMapping(path = "api/detalleventa")
-public class DetalleVentaController {
-
-    @Autowired
-    private DetalleVentaService detalleVentaService;
-
-    @GetMapping
-    public List<DetalleVenta> getAll() {
-        return detalleVentaService.getAllDetalleVentas();
-    }
-
-    @GetMapping("/{detalleVentaId}")
-    public ResponseEntity<DetalleVenta> getById(@PathVariable("detalleVentaId") int detalleVentaId) {
-        Optional<DetalleVenta> detalleVenta = detalleVentaService.getDetalleVentaById(detalleVentaId);
-        return detalleVenta.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    @PostMapping
-    public DetalleVenta saveUpdate(@RequestBody DetalleVenta detalleVenta) {
-        return detalleVentaService.saveOrUpdate(detalleVenta);
-    }
-
-    @PutMapping("/{detalleVentaId}")
-    public ResponseEntity<DetalleVenta> updateDetalleVenta(@PathVariable("detalleVentaId") int detalleVentaId, @RequestBody DetalleVenta detalleVenta) {
-        DetalleVenta updatedDetalleVenta = detalleVentaService.updateDetalleVenta(detalleVentaId, detalleVenta);
-        return ResponseEntity.ok(updatedDetalleVenta);
-    }
-
-    @DeleteMapping("/{detalleVentaId}")
-    public ResponseEntity<Void> delete(@PathVariable("detalleVentaId") int detalleVentaId) {
-        detalleVentaService.deleteDetalleVenta(detalleVentaId);
-        return ResponseEntity.noContent().build();
-    }
-}
->>>>>>> 7c669b89111448140bd76d3866b2563fe1316aa3

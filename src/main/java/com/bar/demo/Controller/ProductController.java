@@ -31,7 +31,6 @@ public class ProductController {
                     .id(product.getId())
                     .name(product.getName())
                     .price(product.getPrice())
-                    .stock(product.getStock())
                     .maker(product.getMaker())
                     .detalleVentaList(product.getDetalleVentaList())
                     .build();

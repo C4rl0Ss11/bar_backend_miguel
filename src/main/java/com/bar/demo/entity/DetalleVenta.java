@@ -1,6 +1,5 @@
 package com.bar.demo.entity;
 
-<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -35,27 +34,3 @@ public class DetalleVenta {
 
 
 }
-=======
-import jakarta.persistence.*;
-import lombok.Data;
-
-import java.math.BigDecimal;
-
-@Data
-@Entity
-@Table(name = "detalleventa")
-public class DetalleVenta {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idDetalleVenta;
-    private Integer idProducto;
-    private Integer cantidad;
-    private BigDecimal subtotal;
-
-    @ManyToOne
-    @JoinColumn(name = "idVenta", nullable = false)
-    private Venta venta;
-}
-
->>>>>>> 7c669b89111448140bd76d3866b2563fe1316aa3
