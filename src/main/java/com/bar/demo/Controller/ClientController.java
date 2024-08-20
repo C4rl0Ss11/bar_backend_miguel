@@ -25,6 +25,7 @@ public class ClientController {
     @Autowired
     private IClientService clientService;
 
+<<<<<<< HEAD
 
 
     @GetMapping("/find/{id}")
@@ -43,6 +44,32 @@ public class ClientController {
             return ResponseEntity.ok(clientDTO);
         }
         return ResponseEntity.notFound().build();
+=======
+    @GetMapping
+    public List<Client> getAll(){
+        return clientService.getClients();
+    }
+    @GetMapping("/{clientId}")
+    public Optional<Client> getById(@PathVariable("clientId")Long clientId){
+        return clientService.getClient(clientId);
+    }
+
+
+    @PostMapping
+    public Client saveUpdate(@RequestBody Client client){
+        clientService.saveOrUpdate(client);
+        return client;
+    }
+    @PutMapping("/{clientId}")
+    public Client updateClient(@PathVariable("clientId") Long clientId, @RequestBody Client client) {
+        // Aquí puedes verificar si el cliente existe antes de actualizarlo
+        clientService.updateClient(clientId, client);
+        return client;
+    }
+    @DeleteMapping("/{clientId}")
+    public void saveUpdate(@PathVariable("clientId") Long clientId){
+        clientService.delete(clientId);
+>>>>>>> 7c669b89111448140bd76d3866b2563fe1316aa3
     }
 
     @GetMapping("/findAll")
