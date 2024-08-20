@@ -22,6 +22,7 @@ public class ProductDAOImpl implements IProductDAO {
 
     @Override
     public Optional<Product> findById(Long id) {
+
         return productRepository.findById(id);
     }
 
@@ -32,11 +33,13 @@ public class ProductDAOImpl implements IProductDAO {
 
     @Override
     public void save(Product product) {
+
         productRepository.save(product);
     }
 
     @Override
     public void delete(Long id) {
-    productRepository.deleteById(id);
+
+        productRepository.deleteById(id);
     }
 }

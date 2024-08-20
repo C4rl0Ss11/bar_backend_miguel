@@ -2,16 +2,13 @@ package com.bar.demo.Controller;
 
 import com.bar.demo.Controller.dto.MakerDTO;
 import com.bar.demo.entity.Maker;
-import com.bar.demo.persistence.IMakerDAO;
 import com.bar.demo.service.IMakerService;
-import com.bar.demo.service.impl.MakerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
